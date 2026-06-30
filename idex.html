@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Free Offline Chatbot</title>
+<style>
+body{font-family:Arial;background:#f0f0f0}
+#chat{height:300px;overflow:auto;border:1px solid #ccc;padding:10px;background:white}
+input{width:80%;padding:10px}
+button{padding:10px}
+</style>
+</head>
+<body>
+
+<h2>🤖 Free Chatbot</h2>
+
+<div id="chat"></div>
+
+<input id="msg" placeholder="Type here...">
+<button onclick="send()">Send</button>
+
+<script>
+function send(){
+
+let input=document.getElementById("msg");
+let text=input.value;
+if(text=="") return;
+
+let chat=document.getElementById("chat");
+
+chat.innerHTML+="<p><b>You:</b> "+text+"</p>";
+
+let t=text.toLowerCase();
+
+let reply="I don't know.";
+
+if(t.includes("hi")||t.includes("hello"))
+reply="Hello!";
+
+else if(t.includes("name"))
+reply="I'm a free chatbot.";
+
+else if(t.includes("time"))
+reply=new Date().toLocaleTimeString();
+
+else if(t.includes("date"))
+reply=new Date().toLocaleDateString();
+
+else if(t.includes("bye"))
+reply="Goodbye!";
+
+chat.innerHTML+="<p><b>Bot:</b> "+reply+"</p>";
+
+chat.scrollTop=chat.scrollHeight;
+
+input.value="";
+}
+</script>
+
+</body>
+</html>
